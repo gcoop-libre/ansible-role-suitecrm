@@ -3,3 +3,7 @@
 
 suitecrm_version: v7.8.3
 suitecrm_dest: /var/www/html/suitecrm
+suitecrm_admin_user_name: admin
+suitecrm_admin_password: MuySecreta
+suitecrm_setup_system_name: SuiteCRM deployed with Ansible
+suitecrm_setup_site_url: "http://localhost/suitecrm"

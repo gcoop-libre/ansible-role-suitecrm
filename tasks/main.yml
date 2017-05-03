@@ -1,2 +1,31 @@
 ---
 # tasks file for gcoop-libre.suitecrm
+
+- name: Set cache permissions
+  file:
+    path: "{{ suitecrm_dest }}/cache"
+    owner: www-data
+    group: www-data
+    mode: 0777
+    state: directory
+
+- name: "Copy config_si.php to SuiteCRM root"
+  template:
+    src: "config_si.php.j2"
+    dest: "{{ suitecrm_dest }}/config_si.php"
+    owner: debian
+    group: debian
+    mode: '0644'
+
+- name: Install SuiteCRM
+  shell: php -r "\$_SERVER['HTTP_HOST'] = 'localhost'; \$_SERVER['REQUEST_URI'] = 'install.php';\$_REQUEST = array('goto' => 'SilentInstall', 'cli' => true);require_once 'install.php';";
+  args:
+    chdir: "{{ suitecrm_dest }}"
+    creates: "{{ suitecrm_dest }}/config.php"
+
+- name: Set config_override.php permissions
+  file:
+    path: "{{ suitecrm_dest }}/config_override.php"
+    owner: www-data
+    group: www-data
+    mode: 0666
