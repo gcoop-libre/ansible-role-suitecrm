@@ -1,2 +1,5 @@
 ---
 # defaults file for gcoop-libre.suitecrm
+
+suitecrm_version: v7.8.3
+suitecrm_dest: /var/www/html/suitecrm
