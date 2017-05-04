@@ -62,4 +62,12 @@ $sugar_config_si  = array(
         'Contacts',
         'Tasks',
     ),
+    'logger' => array(
+        'file' => array(
+            'maxSize' => '20MB',
+            'name' => 'suitecrm',
+        ),
+        'level' => 'info',
+    ),
+    'log_dir' => '{{ suitecrm_log_dir }}',
 );

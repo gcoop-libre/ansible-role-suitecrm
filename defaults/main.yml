@@ -11,3 +11,4 @@ suitecrm_mysql_user: suitecrm
 suitecrm_mysql_user_password: suitecrmpassword
 suitecrm_mysql_db: suitecrm
 suitecrm_mysql_host: 127.0.0.1
+suitecrm_log_dir: /var/log/apache2

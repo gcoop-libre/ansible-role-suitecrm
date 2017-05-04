@@ -4,7 +4,6 @@ galaxy_info:
   company: gcoop Cooperativa de Software Libre
   issue_tracker_url: https://github.com/gcoop-libre/ansible-role-suitecrm/issues
   license: GPLv2
-  min_ansible_version: 1.2
   github_branch: master
   min_ansible_version: 2.0
 
