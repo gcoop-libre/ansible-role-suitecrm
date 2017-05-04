@@ -13,6 +13,9 @@ You need a server running GNU+Linux with rsync, Apache, PHP and MySQL. You can u
 * `geerlingguy.mysql`
 * `geerlingguy.php`
 
+In the local machine `git` is required.
+
+
 Role Variables
 --------------
 
