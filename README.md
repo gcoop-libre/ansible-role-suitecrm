@@ -1,5 +1,5 @@
-Role Name
-=========
+Ansible Role: SuiteCRM
+======================
 
 This role install [SuiteCRM](https://suitecrm.com) from [github official repo](https://github.com/salesagility/SuiteCRM).
 
