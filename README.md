@@ -6,7 +6,7 @@ This role install [SuiteCRM](https://suitecrm.com) from [github official repo](h
 Requirements
 ------------
 
-You need a server running GNU+Linux, Apache, PHP and MySQL. You can use the following roles:
+You need a server running GNU+Linux with rsync, Apache, PHP and MySQL. You can use the following roles:
 
 * `gcoop-libre.apache`
 * `gcoop-libre.percona-repo`
@@ -15,9 +15,6 @@ You need a server running GNU+Linux, Apache, PHP and MySQL. You can use the foll
 
 Role Variables
 --------------
-
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
 
 * suitecrm_version: v7.8.3
 * suitecrm_dest: /var/www/html/suitecrm
