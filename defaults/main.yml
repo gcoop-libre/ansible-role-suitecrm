@@ -7,3 +7,7 @@ suitecrm_admin_user_name: admin
 suitecrm_admin_password: MuySecreta
 suitecrm_setup_system_name: SuiteCRM deployed with Ansible
 suitecrm_setup_site_url: "http://localhost/suitecrm"
+suitecrm_mysql_user: suitecrm
+suitecrm_mysql_user_password: suitecrmpassword
+suitecrm_mysql_db: suitecrm
+suitecrm_mysql_host: 127.0.0.1
