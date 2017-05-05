@@ -6,7 +6,7 @@ This role install [SuiteCRM](https://suitecrm.com) from [github official repo](h
 Requirements
 ------------
 
-You need a server running GNU+Linux with rsync, Apache, PHP and MySQL. You can use the following roles:
+You need a server running GNU+Linux (with rsync and unzip), Apache, PHP and MySQL. You can use the following roles:
 
 * `gcoop-libre.apache`
 * `gcoop-libre.percona-repo`
@@ -29,6 +29,8 @@ Role Variables
 * suitecrm_admin_password: Admin password
 * suitecrm_setup_system_name: SuiteCRM deployed with Ansible
 * suitecrm_setup_site_url: "http://localhost/suitecrm"
+* suitecrm_default_language: es_ES
+* suitecrm_translations_file: URL of the translations file
 
 
 Variable `suitecrm_version` is SuiteCRM version you want to install, as tagged [here](https://github.com/salesagility/SuiteCRM/tags). We strongly recommend [LTS versions](https://suitecrm.com/lts/).

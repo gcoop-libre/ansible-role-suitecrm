@@ -11,4 +11,7 @@ suitecrm_mysql_user: suitecrm
 suitecrm_mysql_user_password: suitecrmpassword
 suitecrm_mysql_db: suitecrm
 suitecrm_mysql_host: 127.0.0.1
-suitecrm_log_dir: /var/log/apache2
+suitecrm_log_dir: /var/log/suitecrm
+suitecrm_default_language: es_ES
+suitecrm_translations_temp_directory_mask: /tmp/suitecrm_translations.XXXXXXXXXX
+suitecrm_translations_file: "https://crowdin.com/download/project/suitecrmtranslations.zip"

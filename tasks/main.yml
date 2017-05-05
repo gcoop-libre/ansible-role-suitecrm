@@ -29,3 +29,57 @@
     owner: www-data
     group: www-data
     mode: 0666
+
+- name: Ensure cahce/ permissions
+  file:
+    path: "{{ suitecrm_dest }}/cache"
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: 0755
+    recurse: yes
+
+- name: "Translations: Generate random temp directory"
+  command: mktemp -d "{{ suitecrm_translations_temp_directory_mask }}"
+  become: no
+  changed_when: false
+  register: suitecrm_translations_temp_dir
+
+- name: "Translations: Adjust random temp directory permissions"
+  file:
+    path: "{{ suitecrm_translations_temp_dir.stdout }}"
+    mode: '0755'
+  become: no
+  changed_when: false
+
+- name: "Translations: Downloading zip file"
+  get_url:
+    url: "{{ suitecrm_translations_file }}"
+    dest: "{{ suitecrm_translations_temp_dir.stdout }}/suitecrmtranslations.zip"
+    mode: 0660
+
+- name: "Translations: unzip file"
+  unarchive:
+    src: "{{ suitecrm_translations_temp_dir.stdout }}/suitecrmtranslations.zip"
+    dest: "{{ suitecrm_translations_temp_dir.stdout }}"
+    remote_src: True
+
+- name: "Translations: copy translations files"
+  command: "cp -r {{ suitecrm_translations_temp_dir.stdout }}/{{ item }} {{ suitecrm_dest }}"
+  with_items:
+     - include
+     - install
+     - modules
+     - upgrade
+
+- name: Set other directories permissions
+  file:
+    path: "{{ suitecrm_dest }}/{{ item }}"
+    owner: www-data
+    group: www-data
+    mode: 0775
+    state: directory
+  with_items:
+    - upgrades
+    - update
+    - upload
