@@ -15,3 +15,5 @@ suitecrm_log_dir: /var/log/suitecrm
 suitecrm_default_language: es_ES
 suitecrm_translations_temp_directory_mask: /tmp/suitecrm_translations.XXXXXXXXXX
 suitecrm_translations_file: "https://crowdin.com/download/project/suitecrmtranslations.zip"
+suitecrm_remote_user: debian
+suitecrm_apache_user: www-data
