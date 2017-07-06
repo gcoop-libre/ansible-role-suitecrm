@@ -84,6 +84,7 @@
     group: "{{ suitecrm_apache_user }}"
     mode: 0775
     state: directory
+    recurse: yes
   with_items:
     - upgrades
     - update
