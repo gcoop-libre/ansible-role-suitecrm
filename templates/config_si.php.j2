@@ -25,6 +25,18 @@ $sugar_config_si  = array(
     'setup_site_admin_password' => '{{ suitecrm_admin_password }}',
     'setup_site_admin_user_name' => '{{ suitecrm_admin_user_name }}',
     'setup_site_url' => '{{ suitecrm_setup_site_url }}',
+    'email1' => 'admin@nube.coop',
+    'smtp_tab_other[mail_smtpserver]' => 'nube.coop',
+    'smtp_tab_other[mail_smtpserver]' => 25,
+    'mail_smtpauth_req_chk' => true,
+    'smtp_tab_other__mail_smtpuser' => 'smtp_user',
+    'smtp_tab_other__mail_smtppass' => 'smtp_pass',
+    'notify_allow_default_outbound_chk' => true,
+    'http_referer' => array(
+        'list' => array(
+            0 => '{{ suitecrm_setup_site_url }}',
+        ),
+    ),
     'setup_system_name' => '{{ suitecrm_setup_system_name }}',
     'addAjaxBannedModules' => array(
         'Home',
@@ -127,4 +139,5 @@ $sugar_config_si  = array(
         'zh_CN' => '简体中文 (Chinese-Simplified)',
         'zh_TW' => 'Chinese (Taiwan)',
     ),
+    'disabled_languages' => 'af_ZA,ar_EG,ar_SA,bg_BG,ca_ES,cs_CZ,da_DK,de_DE,de_CH,el_GR,es_MX,es_PY,et_EE,eu_ES,fa_IR,fi_FI,fr_FR,fr_CA,en_US,he_IL,hi_IN,hr_HR,hu_HU,hy_AM,id_ID,it_IT,ja_JP,ka_GE,ko_KR,lt_LT,lv_LV,mk_MK,nb_NO,nl_NL,pl_PL,pt_BR,pt_PT,ro_RO,ru_RU,si_LK,sk_SK,sl_SI,sq_AL,sr_CS,sv_SE,th_TH,tr_TR,uk_UA,ur_PK,vi_VN,zh_CN,zh_TW',
 );
