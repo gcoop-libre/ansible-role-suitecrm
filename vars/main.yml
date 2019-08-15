@@ -4,7 +4,7 @@
 deploy_git_repos_become_rsync: yes
 deploy_git_repos:
   - name: SuiteCRM
-    repo: "https://github.com/salesagility/SuiteCRM.git"
+    repo: "{{ suitecrm_repo }}"
     version: "{{ suitecrm_version }}"
     dest: "{{ suitecrm_dest }}"
     excludes:
