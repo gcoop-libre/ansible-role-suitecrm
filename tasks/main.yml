@@ -1,6 +1,13 @@
 ---
 # tasks file for gcoop-libre.suitecrm
 
+- name: Set app dir permissions
+  file:
+    path: "{{ suitecrm_dest }}"
+    owner: "{{ suitecrm_apache_user }}"
+    group: "{{ suitecrm_apache_user }}"
+    recurse: yes
+
 - name: Set cache permissions
   file:
     path: "{{ suitecrm_dest }}/cache"
