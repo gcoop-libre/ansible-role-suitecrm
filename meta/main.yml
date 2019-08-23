@@ -1,3 +1,4 @@
+---
 galaxy_info:
   author: gcoop-libre
   description: Install SuiteCRM
@@ -14,7 +15,6 @@ galaxy_info:
     - name: Debian
       versions:
         - all
-
 
   galaxy_tags:
     - SuiteCRM
