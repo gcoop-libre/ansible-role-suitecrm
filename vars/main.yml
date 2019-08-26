@@ -3,7 +3,7 @@
 
 deploy_git_repos_become_rsync: yes
 deploy_git_repos:
-  - name: SuiteCRM
+  - name: "{{ suitecrm_repo_name }}"
     repo: "{{ suitecrm_repo }}"
     version: "{{ suitecrm_version }}"
     dest: "{{ suitecrm_dest }}"

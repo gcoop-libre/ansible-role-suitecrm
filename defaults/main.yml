@@ -1,6 +1,7 @@
 ---
 # defaults file for gcoop-libre.suitecrm
 
+suitecrm_repo_name: SuiteCRM
 suitecrm_version: v7.8.3
 suitecrm_repo: "https://github.com/salesagility/SuiteCRM.git"
 suitecrm_dest: /var/www/html/suitecrm
