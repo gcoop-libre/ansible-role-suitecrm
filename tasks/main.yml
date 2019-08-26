@@ -70,6 +70,13 @@
     dest: "{{ suitecrm_translations_temp_dir.stdout }}/suitecrmtranslations.zip"
     mode: 0660
 
+- name: "Translations: Installing unzip app"
+  apt:
+    name: unzip
+    state: present
+    force_apt_get: yes
+    update_cache: yes
+
 - name: "Translations: unzip file"
   unarchive:
     src: "{{ suitecrm_translations_temp_dir.stdout }}/suitecrmtranslations.zip"
