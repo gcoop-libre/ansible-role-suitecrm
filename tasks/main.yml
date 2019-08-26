@@ -52,10 +52,13 @@
     recurse: yes
 
 - name: "Translations: Generate random temp directory"
-  command: mktemp -d "{{ suitecrm_translations_temp_directory_mask }}"
   become: no
   changed_when: false
   register: suitecrm_translations_temp_dir
+  tempfile:
+    state: dir
+    path: "{{ suitecrm_translations_temp_directory_mask }}"
+  register: "{{ suitecrm_translations_temp_directory_mask.path }}"
 
 - name: "Translations: Adjust random temp directory permissions"
   file:
@@ -124,6 +127,7 @@
     state: file
 
 - name: Run composer update
+  become: yes
   become_user: "{{ ansible_user }}"
   composer:
     command: update
@@ -131,6 +135,7 @@
     no_dev: "{{ suitecrm_composer_no_dev }}"
 
 - name: Run composer install
+  become: yes
   become_user: "{{ ansible_user }}"
   composer:
     command: install

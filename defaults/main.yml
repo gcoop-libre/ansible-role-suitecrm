@@ -23,3 +23,4 @@ suitecrm_translations_file: "https://crowdin.com/backend/download/project/suitec
 suitecrm_remote_user: debian
 suitecrm_apache_user: www-data
 suitecrm_apache_group: www-data
+suitecrm_composer_no_dev: true
