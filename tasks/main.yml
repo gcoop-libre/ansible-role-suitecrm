@@ -5,14 +5,14 @@
   file:
     path: "{{ suitecrm_dest }}"
     owner: "{{ suitecrm_apache_user }}"
-    group: "{{ suitecrm_apache_user }}"
+    group: "{{ suitecrm_apache_group }}"
     recurse: yes
 
 - name: Set cache permissions
   file:
     path: "{{ suitecrm_dest }}/cache"
     owner: "{{ suitecrm_apache_user }}"
-    group: "{{ suitecrm_apache_user }}"
+    group: "{{ suitecrm_apache_group }}"
     mode: 0777
     state: directory
 
@@ -20,9 +20,9 @@
   template:
     src: "config_si.php.j2"
     dest: "{{ suitecrm_dest }}/config_si.php"
-    owner: "{{ suitecrm_remote_user }}"
-    group: "{{ suitecrm_remote_user }}"
-    mode: '0644'
+    owner: "{{ suitecrm_apache_user }}"
+    group: "{{ suitecrm_apache_group }}"
+    mode: 0644
 
 - name: Delete .htaccess if present
   file:
@@ -39,7 +39,7 @@
   file:
     path: "{{ suitecrm_dest }}/config_override.php"
     owner: "{{ suitecrm_apache_user }}"
-    group: "{{ suitecrm_apache_user }}"
+    group: "{{ suitecrm_apache_group }}"
     mode: 0666
 
 - name: Ensure cache/ permissions
@@ -47,7 +47,7 @@
     path: "{{ suitecrm_dest }}/cache"
     state: directory
     owner: "{{ suitecrm_apache_user }}"
-    group: "{{ suitecrm_apache_user }}"
+    group: "{{ suitecrm_apache_group }}"
     mode: 0755
     recurse: yes
 
@@ -95,7 +95,7 @@
   file:
     path: "{{ suitecrm_dest }}/{{ item }}"
     owner: "{{ suitecrm_apache_user }}"
-    group: "{{ suitecrm_apache_user }}"
+    group: "{{ suitecrm_apache_group }}"
     mode: 0775
     state: directory
     recurse: yes

@@ -21,3 +21,4 @@ suitecrm_translations_temp_directory_mask: /tmp/suitecrm_translations.XXXXXXXXXX
 suitecrm_translations_file: "https://crowdin.com/backend/download/project/suitecrmtranslations.zip"
 suitecrm_remote_user: debian
 suitecrm_apache_user: www-data
+suitecrm_apache_group: www-data
