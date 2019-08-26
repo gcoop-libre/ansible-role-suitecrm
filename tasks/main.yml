@@ -105,3 +105,34 @@
     - upload
     - themes
     - custom
+
+- name: Set vendor permissions
+  file:
+    path: "{{ suitecrm_dest }}/vendor"
+    owner: "{{ suitecrm_apache_user }}"
+    group: "{{ suitecrm_apache_group }}"
+    mode: 0777
+    state: directory
+    recurse: true
+
+- name: Set composer.lock permissions
+  file:
+    path: "{{ suitecrm_dest }}/composer.lock"
+    owner: "{{ suitecrm_apache_user }}"
+    group: "{{ suitecrm_apache_group }}"
+    mode: 0777
+    state: file
+
+- name: Run composer update
+  become_user: "{{ ansible_user }}"
+  composer:
+    command: update
+    working_dir: "{{ suitecrm_dest }}"
+    no_dev: "{{ suitecrm_composer_no_dev }}"
+
+- name: Run composer install
+  become_user: "{{ ansible_user }}"
+  composer:
+    command: install
+    working_dir: "{{ suitecrm_dest }}"
+    no_dev: "{{ suitecrm_composer_no_dev }}"
