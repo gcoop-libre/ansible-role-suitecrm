@@ -4,6 +4,7 @@
 suitecrm_repo_name: SuiteCRM
 suitecrm_version: v7.8.3
 suitecrm_repo: "https://github.com/salesagility/SuiteCRM.git"
+suitecrm_repo_clean: false
 #optional, in case you need ssh key for cloning the repository
 #suitecrm_repo_key_file: "~/.ssh/id_rsa"
 suitecrm_dest: /var/www/html/suitecrm

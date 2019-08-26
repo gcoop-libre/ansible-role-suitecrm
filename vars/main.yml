@@ -9,5 +9,5 @@ deploy_git_repos:
     dest: "{{ suitecrm_dest }}"
     excludes:
       - .git*
-    clean: false
+    clean: "{{ suitecrm_repo_clean }}"
     key_file: "{{ suitecrm_repo_key_file | default(omit) }}"
