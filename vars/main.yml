@@ -10,3 +10,4 @@ deploy_git_repos:
     excludes:
       - .git*
     clean: false
+    key_file: "{{ suitecrm_repo_key_file | default(omit) }}"
