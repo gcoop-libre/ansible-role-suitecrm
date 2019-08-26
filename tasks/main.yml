@@ -70,7 +70,7 @@
     dest: "{{ suitecrm_translations_temp_dir.stdout }}/suitecrmtranslations.zip"
     mode: 0660
 
-- name: "Translations: Installing unzip app"
+- name: "Translations: Installing unzip app if not already present"
   apt:
     name: unzip
     state: present
