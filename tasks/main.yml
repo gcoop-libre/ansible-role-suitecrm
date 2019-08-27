@@ -52,13 +52,10 @@
     recurse: yes
 
 - name: "Translations: Generate random temp directory"
-  become: no
+  command: mktemp -d "{{ suitecrm_translations_temp_directory_mask }}"
   changed_when: false
   register: suitecrm_translations_temp_dir
-  tempfile:
-    state: dir
-    path: "{{ suitecrm_translations_temp_directory_mask }}"
-  register: "{{ suitecrm_translations_temp_directory_mask.path }}"
+  become: no
 
 - name: "Translations: Adjust random temp directory permissions"
   file:
