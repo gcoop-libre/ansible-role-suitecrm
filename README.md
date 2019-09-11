@@ -1,7 +1,7 @@
 Ansible Role: SuiteCRM
 ======================
 
-This role install [SuiteCRM](https://suitecrm.com) from [github official repo](https://github.com/salesagility/SuiteCRM).
+This role installs [SuiteCRM](https://suitecrm.com). Default value for `suitecrm_repo` variable is SuiteCRM official repository [github official repo](https://github.com/salesagility/SuiteCRM).
 
 Requirements
 ------------
@@ -19,7 +19,11 @@ In the local machine `git` is required.
 Role Variables
 --------------
 
+* suitecrm_repo_name: SuiteCRM
+* suitecrm_repo: "https://github.com/salesagility/SuiteCRM.git"
+* suitecrm_repo_key_file: [sshkey path, optional - can be used to specify the ssh key to use when cloning]
 * suitecrm_version: v7.8.3
+* suitecrm_repo_clean: true
 * suitecrm_dest: /var/www/html/suitecrm
 * suitecrm_mysql_user: Database user
 * suitecrm_mysql_user_password: Database user password
@@ -29,11 +33,19 @@ Role Variables
 * suitecrm_admin_password: Admin password
 * suitecrm_setup_system_name: SuiteCRM deployed with Ansible
 * suitecrm_setup_site_url: "http://localhost/suitecrm"
+* suitecrm_log_dir: /var/log/suitecrm
 * suitecrm_default_language: es_ES
 * suitecrm_translations_file: URL of the translations file
+* suitecrm_remote_user: debian
+* suitecrm_apache_user: www-data
+* suitecrm_apache_group: www-data
+* suitecrm_install_from_scratch: true (set to false to clone the repo and set permissions only)
+* suitecrm_install_translations: true
+* suitecrm_composer_install: true
+* suitecrm_composer_no_dev: true
 
-
-Variable `suitecrm_version` is SuiteCRM version you want to install, as tagged [here](https://github.com/salesagility/SuiteCRM/tags). We strongly recommend [LTS versions](https://suitecrm.com/lts/).
+Variable `suitecrm_version` is SuiteCRM version (git branch or tag) you want to install.
+We strongly recommend [LTS versions](https://suitecrm.com/lts/).
 
 Dependencies
 ------------
@@ -43,15 +55,12 @@ This role depends on `gcoop-libre.deploy-git-repos`
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
     - hosts: servers
       become: yes
-      remote_user: debian
+      suitecrm_remote_user: debian
 
       roles:
         - role: gcoop-libre.suitecrm
-
 
 
 License
@@ -62,4 +71,4 @@ GPLv2
 Author Information
 ------------------
 
-This role was created in 2017 with love by [gcoop Cooperativa de Software Libre](http://gcoop.coop).
+Created with love by [gcoop Cooperativa de Software Libre](http://gcoop.coop).
