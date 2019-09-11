@@ -23,7 +23,7 @@ Role Variables
 * suitecrm_repo: "https://github.com/salesagility/SuiteCRM.git"
 * suitecrm_repo_key_file: [sshkey path, optional - can be used to specify the ssh key to use when cloning]
 * suitecrm_version: v7.8.3
-* suitecrm_repo_clean: true
+* suitecrm_repo_clean: false
 * suitecrm_dest: /var/www/html/suitecrm
 * suitecrm_mysql_user: Database user
 * suitecrm_mysql_user_password: Database user password
