@@ -24,3 +24,6 @@ suitecrm_remote_user: debian
 suitecrm_apache_user: www-data
 suitecrm_apache_group: www-data
 suitecrm_composer_no_dev: true
+suitecrm_install_from_scratch: true
+suitecrm_install_translations: true
+suitecrm_composer_install: true
