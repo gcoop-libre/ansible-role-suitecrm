@@ -1,5 +1,4 @@
 ---
-# tasks file for gcoop-libre.suitecrm
 
 - name: Set app dir permissions
   file:
@@ -17,6 +16,7 @@
     state: directory
 
 - name: "Copy config_si.php to SuiteCRM root"
+  when: suitecrm_install_from_scratch
   template:
     src: "config_si.php.j2"
     dest: "{{ suitecrm_dest }}/config_si.php"
@@ -30,6 +30,7 @@
     state: absent
 
 - name: Install SuiteCRM
+  when: suitecrm_install_from_scratch
   shell: php -r "\$_SERVER['HTTP_HOST'] = 'localhost'; \$_SERVER['REQUEST_URI'] = 'install.php';\$_REQUEST = array('goto' => 'SilentInstall', 'cli' => true);require_once 'install.php';";
   args:
     chdir: "{{ suitecrm_dest }}"
@@ -51,45 +52,8 @@
     mode: 0755
     recurse: yes
 
-- name: "Translations: Generate random temp directory"
-  command: mktemp -d "{{ suitecrm_translations_temp_directory_mask }}"
-  changed_when: false
-  register: suitecrm_translations_temp_dir
-  become: no
-
-- name: "Translations: Adjust random temp directory permissions"
-  file:
-    path: "{{ suitecrm_translations_temp_dir.stdout }}"
-    mode: '0755'
-  become: no
-  changed_when: false
-
-- name: "Translations: Downloading zip file"
-  get_url:
-    url: "{{ suitecrm_translations_file }}"
-    dest: "{{ suitecrm_translations_temp_dir.stdout }}/suitecrmtranslations.zip"
-    mode: 0660
-
-- name: "Translations: Installing unzip app if not already present"
-  apt:
-    name: unzip
-    state: present
-    force_apt_get: yes
-    update_cache: yes
-
-- name: "Translations: unzip file"
-  unarchive:
-    src: "{{ suitecrm_translations_temp_dir.stdout }}/suitecrmtranslations.zip"
-    dest: "{{ suitecrm_translations_temp_dir.stdout }}"
-    remote_src: True
-
-- name: "Translations: copy translations files"
-  command: "cp -r {{ suitecrm_translations_temp_dir.stdout }}/{{ item }} {{ suitecrm_dest }}"
-  with_items:
-     - include
-     - install
-     - modules
-     - upgrade
+- import_tasks: tasks/translations.yml
+  when: suitecrm_install_translations
 
 - name: Set other directories permissions
   file:
@@ -106,35 +70,5 @@
     - themes
     - custom
 
-- name: Set vendor permissions
-  file:
-    path: "{{ suitecrm_dest }}/vendor"
-    owner: "{{ suitecrm_apache_user }}"
-    group: "{{ suitecrm_apache_group }}"
-    mode: 0777
-    state: directory
-    recurse: true
-
-- name: Set composer.lock permissions
-  file:
-    path: "{{ suitecrm_dest }}/composer.lock"
-    owner: "{{ suitecrm_apache_user }}"
-    group: "{{ suitecrm_apache_group }}"
-    mode: 0777
-    state: file
-
-- name: Run composer update
-  become: yes
-  become_user: "{{ ansible_user }}"
-  composer:
-    command: update
-    working_dir: "{{ suitecrm_dest }}"
-    no_dev: "{{ suitecrm_composer_no_dev }}"
-
-- name: Run composer install
-  become: yes
-  become_user: "{{ ansible_user }}"
-  composer:
-    command: install
-    working_dir: "{{ suitecrm_dest }}"
-    no_dev: "{{ suitecrm_composer_no_dev }}"
+- import_tasks: tasks/composer_install.yml
+  when: suitecrm_composer_install
