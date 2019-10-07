@@ -42,6 +42,7 @@
     owner: "{{ suitecrm_apache_user }}"
     group: "{{ suitecrm_apache_group }}"
     mode: 0666
+    state: touch
 
 - name: Ensure cache/ permissions
   file:
